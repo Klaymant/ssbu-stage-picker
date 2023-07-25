@@ -4,4 +4,4 @@ export type Stage = {
   state: StageState;
 };
 
-type StageState = 'valided' | 'banned' | 'none';
+export type StageState = 'valided' | 'picked' | 'banned' | 'none';
