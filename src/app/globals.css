@@ -29,3 +29,24 @@ body {
 h2 {
   font-family: Smash;
 }
+
+@keyframes horizontal-shaking {
+  0% { transform: translateX(0) }
+  25% { transform: translateX(5px) }
+  50% { transform: translateX(-5px) }
+  75% { transform: translateX(5px) }
+  100% { transform: translateX(0) }
+}
+
+@keyframes grow-up {
+  0% { transform: scale(0.2) }
+  100% { transform: scale(1) }
+}
+
+ .grow-up {
+  animation: grow-up 2s 1;
+ }
+
+ .shaky {
+  animation: horizontal-shaking 0.25s 8;
+ }

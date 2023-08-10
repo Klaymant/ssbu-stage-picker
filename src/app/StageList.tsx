@@ -17,6 +17,7 @@ export function StageList() {
 
     return [noneClasses, pickedClasses, bannedClasses, validedClasses].join(' ');
   }
+  const isStageChosen = stages.find((stage) => stage.state === 'valided');
 
   return (
     <>
@@ -31,9 +32,11 @@ export function StageList() {
             action={() => action(index)}
           />
         ))}
-        {gamePhase === 'done' && <ChosenStageView stage={stages.find((stage) => stage.state === 'valided')} />}
+        {gamePhase === 'done' && <ChosenStageView stage={isStageChosen} />}
       </section>
-      <BaseButton onClick={reset}>Reset</BaseButton>
+      <BaseButton onClick={reset}>
+        {isStageChosen ? 'Next game' : 'Reset'}
+      </BaseButton>
     </>
   );
 }
