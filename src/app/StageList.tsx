@@ -20,7 +20,7 @@ export function StageList() {
   return (
     <>
       <h2 className="mt-4 text-center text-lg font-personal-services">{gamePhaseInstructions}</h2>
-      <section className="flex justify-around flex-wrap gap-x-4 p-4 sm:p-8">
+      <section className="flex justify-around flex-wrap gap-x-2 p-1 sm:p-4">
         {gamePhase !== 'done' && stages.map((stage, index) => (
           <StageElement
             key={stage.title}

@@ -5,7 +5,7 @@ const ChosenStageView = ({ stage }: Props) => {
   return (
     <section className="flex flex-col items-center">
       {stage && (
-        <StageView stage={stage} />
+        <StageView stage={stage} size="medium" />
       )}
     </section>
   );

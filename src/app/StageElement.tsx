@@ -7,7 +7,7 @@ export function StageElement({ stage, disabled, classes, action }: Props) {
   const allClasses = [baseClasses, classes].join(' ');
 
   return (
-    <section className="w-28 sm:w-40 my-3 text-xs relative">
+    <section className="w-40 sm:w-40 my-3 text-xs relative">
       <button type="button" onClick={action} disabled={disabled}>
         <StageView stage={stage} classes={allClasses} />
       </button>
