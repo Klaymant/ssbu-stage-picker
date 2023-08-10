@@ -7,9 +7,7 @@ import BaseButton from "./BaseButton";
 import ChosenStageView from "./ChosenStageView";
 
 export function StageList() {
-  const { stages, gamePhase, gamePhaseInstructions, action, reset } = useStageElement();
-  const getDisableState = (stage: Stage) =>
-    stage.state === 'banned' || stage.state === 'valided' || (stage.state === 'none' && gamePhase === 'validation');
+  const { stages, gamePhase, gamePhaseInstructions, action, reset, getDisableState } = useStageElement();
   const getClasses = (stage: Stage) => {
     const noneClasses = stage.state === 'none' ? 'outline-2 outline-white' : '';
     const bannedClasses = stage.state === 'banned' ? 'outline-3 outline-red-500' : '';

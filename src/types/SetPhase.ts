@@ -1,1 +1,1 @@
-export type SetPhase = 'firstPick' | 'counterpick';
+export type SetPhase = 'firstPick' | 'counterPick';

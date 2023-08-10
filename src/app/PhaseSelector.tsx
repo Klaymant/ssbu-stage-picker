@@ -1,27 +1,23 @@
-import { SetPhase } from "@/types/SetPhase";
-import { Dispatch, SetStateAction } from "react";
 import SelectionButton from "./SelectionButton";
+import { useAppContext } from "./contexts/AppProvider";
 
-export function PhaseSelector({ selection, setSelection }: Props) {
+export function PhaseSelector() {
+  const { setPhase, setSetPhase } = useAppContext();
+
   return (
     <section className="flex">
       <SelectionButton
-        isSelected={selection === 'firstPick'}
-        onClick={() => setSelection('firstPick')}
+        isSelected={setPhase === 'firstPick'}
+        onClick={() => setSetPhase('firstPick')}
       >
         First pick
       </SelectionButton>
       <SelectionButton
-        isSelected={selection === 'counterpick'}
-        onClick={() => setSelection('counterpick')}
+        isSelected={setPhase === 'counterPick'}
+        onClick={() => setSetPhase('counterPick')}
       >
         Counterpick
       </SelectionButton>
     </section>
   );
 }
-
-type Props = {
-  selection: SetPhase;
-  setSelection: Dispatch<SetStateAction<SetPhase>>;
-};

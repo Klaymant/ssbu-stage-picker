@@ -1,1 +1,5 @@
-export type GamePhase = 'ban' | 'pick' | 'validation' | 'done';
+export type GamePhase =
+    | 'ban'
+    | 'pick'
+    | 'validation'
+    | 'done';

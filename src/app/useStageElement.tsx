@@ -4,13 +4,26 @@ import { useState } from "react";
 import { Stage, StageState } from "@/types/Stage";
 import { baseStages } from "./stages";
 import { GamePhase } from "@/types/GamePhase";
+import { useAppContext } from "./contexts/AppProvider";
+import { SetPhase } from "@/types/SetPhase";
+import { SetRules } from "@/types/SetRules";
 
-const NB_STAGES_TO_BAN = 3;
-const NB_STAGES_TO_PICK = 2;
-const NB_STAGES_TO_VALIDATE = 1;
+const SET_RULES: Record<SetPhase, SetRules> = {
+  firstPick: {
+    stagesToBan: 3,
+    stagesToPick: 2,
+    stagesToValidate: 1,
+  },
+  counterPick: {
+    stagesToBan: 3,
+    stagesToPick: 0,
+    stagesToValidate: 1,
+  },
+};
 
 export const useStageElement = () => {
   const [stages, setStages] = useState<Stage[]>(baseStages);
+  const { setPhase } = useAppContext();
 
   const updateStageState = (value: StageState, index: number) => {
     const stagesCopy = [...stages];
@@ -49,31 +62,37 @@ export const useStageElement = () => {
   const pickedStages = stages.filter((stage) => stage.state === 'picked');
   const validedStages = stages.filter((stage) => stage.state === 'valided');
 
-  const gamePhase: GamePhase = (() => {
-    if (bannedStages.length < 3) return 'ban';
-    if (bannedStages.length >= 3 && (pickedStages.length < 2 && validedStages.length < 1)) return 'pick';
-    if (validedStages.length < 1) return 'validation';
+  const gamePhase: GamePhase = ((setRules: SetRules) => {
+    if (bannedStages.length < setRules.stagesToBan) return 'ban';
+    if (
+      bannedStages.length >= setRules.stagesToBan &&
+      (pickedStages.length < setRules.stagesToPick && validedStages.length < setRules.stagesToValidate) &&
+      setPhase === 'firstPick')
+      return 'pick';
+    if (validedStages.length < setRules.stagesToValidate) return 'validation';
     return 'done';
-  })();
+  })(SET_RULES[setPhase]);
 
-  const remainingBannedStages = NB_STAGES_TO_BAN - bannedStages.length;
-  const remainingPickedStages = NB_STAGES_TO_PICK - pickedStages.length;
-  const remainingValidedStages = NB_STAGES_TO_VALIDATE - validedStages.length;
+  const remainingBannedStages = SET_RULES.firstPick.stagesToBan - bannedStages.length;
+  const remainingPickedStages = SET_RULES.firstPick.stagesToPick - pickedStages.length;
+  const remainingValidedStages = SET_RULES.firstPick.stagesToValidate - validedStages.length;
 
-  const gamePhaseInstructions = (() => {
+  const gamePhaseInstructions = ((setRules: SetRules) => {
     switch (gamePhase) {
       case 'ban':
         return `Ban ${remainingBannedStages} stages`;
       case 'pick':
         return `Pick ${remainingPickedStages} stages`;
       case 'validation':
-        return `Select the stage among the picked ones`;
+        return setRules.stagesToPick === 0 ?
+          'Select the stage among the unbanned ones' :
+          'Select the stage among the picked ones';
       case 'done':
         return 'Let\'s fight on';
       default:
         throw new Error('Invalid stage phase');
     }
-  })();
+  })(SET_RULES[setPhase]);
   const action = (() => {
     switch (gamePhase) {
       case 'ban':
@@ -86,6 +105,15 @@ export const useStageElement = () => {
         return () => {};
     }
   })();
+
+  const getDisableState = (stage: Stage) => {
+    if (SET_RULES[setPhase].stagesToPick > 0)
+      return stage.state === 'banned' ||
+        stage.state === 'picked' && gamePhase !== 'validation' ||
+        (stage.state === 'none' && gamePhase === 'validation');
+    
+    return stage.state === 'banned';
+  };
 
   return {
     stages,
@@ -102,6 +130,7 @@ export const useStageElement = () => {
     validStage,
     banStage,
     cancelStageChoice,
+    getDisableState,
     reset,
   };
 };
