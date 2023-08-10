@@ -5,6 +5,7 @@ import { useStageElement } from "./useStageElement";
 import { Stage } from "@/types/Stage";
 import BaseButton from "./BaseButton";
 import ChosenStageView from "./ChosenStageView";
+import { GamePhaseInstructions } from "./GamePhaseInstructions";
 
 export function StageList() {
   const { stages, gamePhase, gamePhaseInstructions, action, reset, getDisableState } = useStageElement();
@@ -19,7 +20,7 @@ export function StageList() {
 
   return (
     <>
-      <h2 className="mt-4 text-center text-lg font-personal-services">{gamePhaseInstructions}</h2>
+      <GamePhaseInstructions gamePhaseInstructions={gamePhaseInstructions} />
       <section className="flex justify-around flex-wrap gap-x-2 p-1 sm:p-4">
         {gamePhase !== 'done' && stages.map((stage, index) => (
           <StageElement

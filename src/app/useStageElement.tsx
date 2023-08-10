@@ -88,7 +88,7 @@ export const useStageElement = () => {
           'Select the stage among the unbanned ones' :
           'Select the stage among the picked ones';
       case 'done':
-        return 'Let\'s fight on';
+        return 'Let\'s fight on...';
       default:
         throw new Error('Invalid stage phase');
     }
