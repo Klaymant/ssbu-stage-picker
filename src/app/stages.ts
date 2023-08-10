@@ -22,13 +22,18 @@ export const baseStages: Stage[] = [
     state: 'none',
   },
   {
-    title: 'Kalos',
-    url: 'https://ssb.wiki.gallery/images/thumb/b/bf/SSBU-Kalos_Pok%C3%A9mon_League.png/300px-SSBU-Kalos_Pok%C3%A9mon_League.png',
+    title: 'Hollow Bastion',
+    url: 'https://ssb.wiki.gallery/images/thumb/7/7e/SSBU-Hollow_Bastion.jpg/300px-SSBU-Hollow_Bastion.jpg',
     state: 'none',
   },
   {
-    title: 'Hollow Bastion',
-    url: 'https://ssb.wiki.gallery/images/thumb/7/7e/SSBU-Hollow_Bastion.jpg/300px-SSBU-Hollow_Bastion.jpg',
+    title: 'Lylat Cruise',
+    url: 'https://ssb.wiki.gallery/images/thumb/5/5f/SSBU-Lylat_Cruise.jpg/300px-SSBU-Lylat_Cruise.jpg',
+    state: 'none',
+  },
+  {
+    title: 'Yoshi’s Story',
+    url: 'https://ssb.wiki.gallery/images/thumb/0/0c/SSBU-Yoshi%27s_Story.png/300px-SSBU-Yoshi%27s_Story.png',
     state: 'none',
   },
   {
