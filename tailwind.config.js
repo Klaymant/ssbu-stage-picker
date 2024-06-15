@@ -17,7 +17,10 @@ module.exports = {
       },
       outlineWidth: {
         3: '3px',
-      }
+      },
+      borderWidth: {
+        3: '3px',
+      },
     },
   },
   plugins: [],

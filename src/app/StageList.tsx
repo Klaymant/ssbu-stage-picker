@@ -11,9 +11,9 @@ export function StageList() {
   const { stages, gamePhase, gamePhaseInstructions, action, reset, getDisableState } = useStageElement();
   const getClasses = (stage: Stage) => {
     const noneClasses = stage.state === 'none' ? 'outline-2 outline-white' : '';
-    const bannedClasses = stage.state === 'banned' ? 'outline-3 outline-red-500' : '';
-    const pickedClasses = stage.state === 'picked' ? 'outline-3 outline-blue-500' : '';
-    const validedClasses = stage.state === 'valided' ? 'outline-3 outline-green-500' : '';
+    const bannedClasses = stage.state === 'banned' ? 'border-red-500' : '';
+    const pickedClasses = stage.state === 'picked' ? 'border-blue-500' : '';
+    const validedClasses = stage.state === 'valided' ? 'border-green-500' : '';
 
     return [noneClasses, pickedClasses, bannedClasses, validedClasses].join(' ');
   }
