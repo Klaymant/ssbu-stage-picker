@@ -9,14 +9,6 @@ import { GamePhaseInstructions } from "./GamePhaseInstructions";
 
 export function StageList() {
   const { stages, gamePhase, gamePhaseInstructions, action, reset, getDisableState } = useStageElement();
-  const getClasses = (stage: Stage) => {
-    const noneClasses = stage.state === 'none' ? 'outline-2 outline-white' : '';
-    const bannedClasses = stage.state === 'banned' ? 'border-red-500' : '';
-    const pickedClasses = stage.state === 'picked' ? 'border-blue-500' : '';
-    const validedClasses = stage.state === 'valided' ? 'border-green-500' : '';
-
-    return [noneClasses, pickedClasses, bannedClasses, validedClasses].join(' ');
-  }
   const isStageChosen = stages.find((stage) => stage.state === 'valided');
 
   return (
@@ -27,7 +19,7 @@ export function StageList() {
           <StageElement
             key={stage.title}
             stage={stage}
-            classes={getClasses(stage)}
+            classes={getStageClasses(stage)}
             disabled={getDisableState(stage)}
             action={() => action(index)}
           />
@@ -39,4 +31,17 @@ export function StageList() {
       </BaseButton>
     </>
   );
+
+  function getStageClasses(stage: Stage): string {
+    switch(stage.state) {
+      case 'none':
+        return 'border-white';
+      case 'banned':
+        return 'border-red-500';
+      case 'picked':
+        return 'border-blue-500';
+      case 'valided':
+        return 'border-green-500';
+    }
+  };
 }
