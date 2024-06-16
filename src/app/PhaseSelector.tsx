@@ -5,7 +5,7 @@ import { useStagesContext } from "./contexts/StagesProvider";
 
 export function PhaseSelector() {
   const { setPhase, setSetPhase } = useAppContext();
-  const { reset } = useStagesContext();
+  const { reset, gamePhase } = useStagesContext();
 
   function handlePhaseSelection(phase: SetPhase) {
     if (phase !== setPhase) {
@@ -14,20 +14,26 @@ export function PhaseSelector() {
     }
   }
 
+  gamePhase === 'done' && setSetPhase('firstPick');
+
   return (
-    <section className="flex">
-      <SelectionButton
-        isSelected={setPhase === 'firstPick'}
-        onClick={() => handlePhaseSelection('firstPick')}
-      >
-        First pick
-      </SelectionButton>
-      <SelectionButton
-        isSelected={setPhase === 'counterPick'}
-        onClick={() => handlePhaseSelection('counterPick')}
-      >
-        Counterpick
-      </SelectionButton>
-    </section>
+    <>
+      {gamePhase !== 'done' && (
+        <section className="flex">
+          <SelectionButton
+            isSelected={setPhase === 'firstPick'}
+            onClick={() => handlePhaseSelection('firstPick')}
+          >
+            First pick
+          </SelectionButton>
+          <SelectionButton
+            isSelected={setPhase === 'counterPick'}
+            onClick={() => handlePhaseSelection('counterPick')}
+          >
+            Counterpick
+          </SelectionButton>
+        </section>
+      )}
+    </>
   );
 }
