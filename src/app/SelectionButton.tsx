@@ -6,7 +6,7 @@ const SelectionButton = ({ children, isSelected, onClick }: Props) => {
 
   return (
     <BaseButton
-      classes={isSelected ? selectedClasses : undefined}
+      classes={isSelected ? selectedClasses : ''}
       onClick={onClick}
     >
       {children}

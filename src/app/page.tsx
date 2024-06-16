@@ -1,6 +1,6 @@
 "use client"
 
-import { StageList } from "@/app/StageList";
+import { StageSelection } from "@/app/StageSelection";
 import { PhaseSelector } from "@/app/PhaseSelector";
 import { AppProvider } from "./contexts/AppProvider";
 
@@ -10,7 +10,7 @@ export default function Home() {
       <main className="flex justify-around flex-wrap gap-x-4 p-4 sm:p-8">
         <section>
           <PhaseSelector />
-          <StageList />
+          <StageSelection />
         </section>
       </main>
     </AppProvider>

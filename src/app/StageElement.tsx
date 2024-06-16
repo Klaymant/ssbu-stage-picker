@@ -3,8 +3,7 @@ import { StageView } from "./StageView";
 
 /* eslint-disable @next/next/no-img-element */
 export function StageElement({ stage, disabled, classes, action }: Props) {
-  const baseClasses = 'w-full rounded';
-  const stageClasses = [baseClasses, classes].join(' ');
+  const stageClasses = ['w-full rounded', classes].join(' ');
 
   return (
     <section className="w-40 sm:w-40 my-3 text-xs relative">
