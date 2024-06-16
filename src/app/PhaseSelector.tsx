@@ -14,8 +14,6 @@ export function PhaseSelector() {
     }
   }
 
-  gamePhase === 'done' && setSetPhase('firstPick');
-
   return (
     <>
       {gamePhase !== 'done' && (
