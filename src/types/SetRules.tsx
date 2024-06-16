@@ -1,5 +1,5 @@
 export type SetRules = {
-    stagesToBan: number;
-    stagesToPick: number;
-    stagesToValidate: number;
+    nbStagesToBan: number;
+    nbStagesToPick: number;
+    nbStagesToValidate: number;
 };

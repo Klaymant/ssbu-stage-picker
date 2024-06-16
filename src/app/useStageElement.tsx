@@ -17,9 +17,9 @@ export function useStageElement() {
   const validedStages = stages.filter((stage) => stage.state === 'valided');
 
   const gamePhase: GamePhase = getGamePhase(SET_RULES[setPhase]);
-  const remainingBannedStages = SET_RULES.firstPick.stagesToBan - bannedStages.length;
-  const remainingPickedStages = SET_RULES.firstPick.stagesToPick - pickedStages.length;
-  const remainingValidedStages = SET_RULES.firstPick.stagesToValidate - validedStages.length;
+  const remainingBannedStages = SET_RULES.firstPick.nbStagesToBan - bannedStages.length;
+  const remainingPickedStages = SET_RULES.firstPick.nbStagesToPick - pickedStages.length;
+  const remainingValidedStages = SET_RULES.firstPick.nbStagesToValidate - validedStages.length;
   const gamePhaseInstructions = getGamePhaseInstructions(SET_RULES[setPhase]);
 
   const action = (() => {
@@ -68,8 +68,8 @@ export function useStageElement() {
     setStages(stages.map((stage) => ({ ...stage, state: 'none' })));
   };
 
-  function getDisableState(stage: Stage) {
-    if (SET_RULES[setPhase].stagesToPick > 0)
+  function getDisableState(stage: Stage): boolean {
+    if (SET_RULES[setPhase].nbStagesToPick > 0)
       return stage.state === 'banned' ||
         stage.state === 'picked' && gamePhase !== 'validation' ||
         (stage.state === 'none' && gamePhase === 'validation');
@@ -78,14 +78,16 @@ export function useStageElement() {
   };
 
   function getGamePhase(setRules: SetRules): GamePhase {
-    if (bannedStages.length < setRules.stagesToBan)
+    const pickConditions =
+      bannedStages.length >= setRules.nbStagesToBan &&
+      (pickedStages.length < setRules.nbStagesToPick && validedStages.length < setRules.nbStagesToValidate) &&
+      setPhase === 'firstPick';
+
+    if (bannedStages.length < setRules.nbStagesToBan)
       return 'ban';
-    if (
-      bannedStages.length >= setRules.stagesToBan &&
-      (pickedStages.length < setRules.stagesToPick && validedStages.length < setRules.stagesToValidate) &&
-      setPhase === 'firstPick')
+    if (pickConditions)
       return 'pick';
-    if (validedStages.length < setRules.stagesToValidate)
+    if (validedStages.length < setRules.nbStagesToValidate)
       return 'validation';
     return 'done';
   }
@@ -97,7 +99,7 @@ export function useStageElement() {
       case 'pick':
         return <>Player B <span className="text-blue-500">picks</span> {remainingPickedStages} stages</>;
       case 'validation':
-        return setRules.stagesToPick === 0 ?
+        return setRules.nbStagesToPick === 0 ?
           <>Player B <span className="text-green-500">selects</span> a stage among the unbanned ones</> :
           <>Player A <span className="text-green-500">selects</span> the stage among the picked ones</>;
       case 'done':
