@@ -1,20 +1,30 @@
+import { SetPhase } from "@/types/SetPhase";
 import SelectionButton from "./SelectionButton";
 import { useAppContext } from "./contexts/AppProvider";
+import { useStagesContext } from "./contexts/StagesProvider";
 
 export function PhaseSelector() {
   const { setPhase, setSetPhase } = useAppContext();
+  const { reset } = useStagesContext();
+
+  function handlePhaseSelection(phase: SetPhase) {
+    if (phase !== setPhase) {
+      reset();
+      setSetPhase(phase);
+    }
+  }
 
   return (
     <section className="flex">
       <SelectionButton
         isSelected={setPhase === 'firstPick'}
-        onClick={() => setSetPhase('firstPick')}
+        onClick={() => handlePhaseSelection('firstPick')}
       >
         First pick
       </SelectionButton>
       <SelectionButton
         isSelected={setPhase === 'counterPick'}
-        onClick={() => setSetPhase('counterPick')}
+        onClick={() => handlePhaseSelection('counterPick')}
       >
         Counterpick
       </SelectionButton>
