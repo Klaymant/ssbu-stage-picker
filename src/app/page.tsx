@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <AppProvider>
       <StagesProvider>
-        <main className="flex justify-around flex-wrap gap-x-4 p-4 sm:p-8">
+        <main className="p-4 sm:p-8">
           <section>
             <PhaseSelector />
             <StageSelection />
