@@ -3,15 +3,19 @@ import { StageElement } from "./StageElement";
 
 export function StageSelectionList({ stages, action, getDisableState }: Props) {
   return <>
-    {stages.map((stage, index) => (
-      <StageElement
-        key={stage.title}
-        stage={stage}
-        classes={getStageClasses(stage)}
-        disabled={getDisableState(stage)}
-        action={() => action(index)}
-      />
-    ))}
+    {stages.map((stage, index) => {
+      if (stage.state !== 'banned') {
+        return (
+          <StageElement
+            key={stage.title}
+            stage={stage}
+            classes={getStageClasses(stage)}
+            disabled={getDisableState(stage)}
+            action={() => action(index)}
+          />
+        );
+      }
+    })}
   </>
 }
 

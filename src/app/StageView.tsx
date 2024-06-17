@@ -1,18 +1,26 @@
 import { Stage } from "@/types/Stage";
 import { CssClassHandler } from "./utils/CssClassHandler";
 
+const MODE_SIZES: Record<Mode, string> = {
+  selection: 'h-32',
+  reveal: 'h-48',
+  ban: 'h-8',
+};
+
 /* eslint-disable @next/next/no-img-element */
-export function StageView({ stage, classes, size = 'small', revealMode = false }: Props) {
+export function StageView({ stage, classes, mode }: Props) {
   const baseClasses = 'w-full w-auto object-cover';
-  const sizeClasses = size === 'small' ? 'h-32' : 'h-48';
-  const shakyClasses = revealMode ? 'grow-up' : '';
+  const sizeClasses = MODE_SIZES[mode];
+  const shakyClasses = mode === 'reveal' ? 'grow-up' : '';
   const imgClasses = CssClassHandler.gather(baseClasses, sizeClasses, shakyClasses);
-  const figureClasses = CssClassHandler.gather('rounded border-3', classes);
+  const borderColorClasses = mode === 'ban' ? 'border-red-500' : '';
+  const figureClasses = mode === 'reveal' ? 'shaky' : CssClassHandler.gather('rounded border-3', borderColorClasses, classes);
+  const figCaptionClasses = 'text-center mt-2 mb-2 text-xs font-personal-services';
 
   return (
-    <figure className={revealMode ? 'shaky' : figureClasses}>
+    <figure className={figureClasses}>
       <img src={stage.url} alt={stage.title} className={imgClasses} />
-      <figcaption className="text-center mt-2 mb-2 text-xs font-personal-services">{stage.title}</figcaption>
+      {mode !== 'ban' && <figcaption className={figCaptionClasses}>{stage.title}</figcaption>}
     </figure>
   );
 }
@@ -20,6 +28,7 @@ export function StageView({ stage, classes, size = 'small', revealMode = false }
 type Props = {
   stage: Stage;
   classes?: string;
-  size?: 'small' | 'medium';
-  revealMode?: boolean;
+  mode: Mode;
 };
+
+type Mode = 'selection' | 'reveal' | 'ban';

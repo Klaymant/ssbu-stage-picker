@@ -9,7 +9,7 @@ export function StageElement({ stage, disabled, classes, action }: Props) {
   return (
     <section className="w-40 sm:w-40 my-3 text-xs relative">
       <button type="button" onClick={action} disabled={disabled}>
-        <StageView stage={stage} classes={stageClasses} />
+        <StageView stage={stage} classes={stageClasses} mode="selection" />
       </button>
     </section>
   );
