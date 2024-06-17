@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
+import { CssClassHandler } from "./utils/CssClassHandler";
 
 export function BaseButton({ children, classes, onClick }: Props) {
   const buttonBaseClasses = 'border border-gray-500 rounded mx-2 p-1 font-personal-services';
-  const buttonClasses = [buttonBaseClasses, classes].filter(Boolean).join(' ');
+  const buttonClasses = CssClassHandler.gather(buttonBaseClasses, classes);
 
   return (
     <button

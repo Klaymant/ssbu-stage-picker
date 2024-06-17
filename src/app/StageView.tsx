@@ -1,12 +1,13 @@
 import { Stage } from "@/types/Stage";
+import { CssClassHandler } from "./utils/CssClassHandler";
 
 /* eslint-disable @next/next/no-img-element */
 export function StageView({ stage, classes, size = 'small', revealMode = false }: Props) {
   const baseClasses = 'w-full w-auto object-cover';
   const sizeClasses = size === 'small' ? 'h-32' : 'h-48';
   const shakyClasses = revealMode ? 'grow-up' : '';
-  const imgClasses = [baseClasses, sizeClasses, shakyClasses].filter(Boolean).join(' ');
-  const figureClasses = ['rounded border-3', classes].filter(Boolean).join(' ');
+  const imgClasses = CssClassHandler.gather(baseClasses, sizeClasses, shakyClasses);
+  const figureClasses = CssClassHandler.gather('rounded border-3', classes);
 
   return (
     <figure className={revealMode ? 'shaky' : figureClasses}>
