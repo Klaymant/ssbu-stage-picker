@@ -1,7 +1,7 @@
-import './globals.css';
+import '../../public/style/globals.css';
 import localFont from 'next/font/local';
  
-const personalServicesFont = localFont({ src: '../../public/personal-services.ttf', variable: '--font-smash' });
+const personalServicesFont = localFont({ src: '../../public/assets/fonts/personal-services.ttf', variable: '--font-smash' });
 
 export const metadata = {
   title: 'SSBU Stage Picker',

@@ -1,6 +1,6 @@
 import { Stage } from "@/types/Stage";
 import { StageView } from "./StageView";
-import { CssClassHandler } from "./utils/CssClassHandler";
+import { CssClassHandler } from "../utils/CssClassHandler";
 
 /* eslint-disable @next/next/no-img-element */
 export function StageElement({ stage, disabled, classes, action }: Props) {

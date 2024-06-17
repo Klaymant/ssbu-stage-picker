@@ -1,5 +1,5 @@
 import { Stage } from "@/types/Stage";
-import { CssClassHandler } from "./utils/CssClassHandler";
+import { CssClassHandler } from "../utils/CssClassHandler";
 
 const MODE_SIZES: Record<Mode, string> = {
   selection: 'h-32',

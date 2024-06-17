@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useContext } from "react";
-import { useStageElement } from "../useStageElement";
+import { useStageElement } from "../hooks/useStageElement";
 
 const StagesContext = createContext<StagesContextValues | null>(null);
 

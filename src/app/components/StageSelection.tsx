@@ -5,8 +5,8 @@ import { BaseButton } from "./BaseButton";
 import { ChosenStageView } from "./ChosenStageView";
 import { GamePhaseInstructions } from "./GamePhaseInstructions";
 import { StageSelectionList } from "./StageSelectionList";
-import { useAppContext } from "./contexts/AppProvider";
-import { useStagesContext } from "./contexts/StagesProvider";
+import { useAppContext } from "../contexts/AppProvider";
+import { useStagesContext } from "../contexts/StagesProvider";
 
 export function StageSelection() {
   const { stages, gamePhase, gamePhaseInstructions, bannedStages, action, reset, getDisableState } = useStagesContext();

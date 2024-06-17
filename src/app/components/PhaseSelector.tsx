@@ -1,7 +1,7 @@
 import { SetPhase } from "@/types/SetPhase";
 import SelectionButton from "./SelectionButton";
-import { useAppContext } from "./contexts/AppProvider";
-import { useStagesContext } from "./contexts/StagesProvider";
+import { useAppContext } from "../contexts/AppProvider";
+import { useStagesContext } from "../contexts/StagesProvider";
 
 export function PhaseSelector() {
   const { setPhase, setSetPhase } = useAppContext();

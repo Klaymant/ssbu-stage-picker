@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { CssClassHandler } from "./utils/CssClassHandler";
+import { CssClassHandler } from "../utils/CssClassHandler";
 
 export function BaseButton({ children, classes, onClick }: Props) {
   const buttonBaseClasses = 'border border-gray-500 rounded mx-2 p-1 font-personal-services';

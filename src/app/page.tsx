@@ -1,7 +1,7 @@
 "use client"
 
-import { StageSelection } from "@/app/StageSelection";
-import { PhaseSelector } from "@/app/PhaseSelector";
+import { StageSelection } from "@/app/components/StageSelection";
+import { PhaseSelector } from "@/app/components/PhaseSelector";
 import { AppProvider } from "./contexts/AppProvider";
 import { StagesProvider } from "./contexts/StagesProvider";
 

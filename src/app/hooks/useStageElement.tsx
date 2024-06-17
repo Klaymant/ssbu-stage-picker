@@ -2,11 +2,11 @@
 
 import { ReactNode, useState } from "react";
 import { Stage, StageState } from "@/types/Stage";
-import { baseStages } from "./stages";
+import { baseStages } from "../stages";
 import { GamePhase } from "@/types/GamePhase";
-import { useAppContext } from "./contexts/AppProvider";
+import { useAppContext } from "../contexts/AppProvider";
 import { SetRules } from "@/types/SetRules";
-import { SET_RULES } from "./rules";
+import { SET_RULES } from "../rules";
 
 export function useStageElement() {
   const [stages, setStages] = useState<Stage[]>(baseStages);
