@@ -1,7 +1,7 @@
 import '../../public/style/globals.css';
 import localFont from 'next/font/local';
  
-const personalServicesFont = localFont({ src: '../../public/assets/fonts/personal-services.ttf', variable: '--font-smash' });
+const primaryFont = localFont({ src: '../../public/assets/fonts/made-tommy-soft.otf', variable: '--font-primary' });
 
 export const metadata = {
   title: 'SSBU Stage Picker',
@@ -21,7 +21,7 @@ export default function RootLayout({
         type="image/png"
         sizes="any"
       />
-      <body className={personalServicesFont.variable}>{children}</body>
+      <body className={primaryFont.variable}>{children}</body>
     </html>
   )
 }

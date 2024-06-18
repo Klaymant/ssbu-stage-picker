@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'personal-services': ['var(--font-smash), Calibri, sans-serif'],
+        'primary': ['var(--font-primary), Calibri, sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

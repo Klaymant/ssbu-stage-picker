@@ -15,7 +15,7 @@ export function StageView({ stage, classes, mode }: Props) {
   const imgClasses = CssClassHandler.gather(baseClasses, sizeClasses, shakyClasses);
   const borderColorClasses = mode === 'ban' ? 'border-red-500' : '';
   const figureClasses = mode === 'reveal' ? 'shaky' : CssClassHandler.gather('rounded border-3', borderColorClasses, classes);
-  const figCaptionClasses = 'text-center mt-2 mb-2 text-xs font-personal-services';
+  const figCaptionClasses = 'font-primary mt-2 mb-2';
 
   return (
     <figure className={figureClasses}>
