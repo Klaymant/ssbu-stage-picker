@@ -1,7 +1,11 @@
 export function Footer() {
   return (
     <footer>
-      <p>Created by <a href="https://github.com/Klaymant">Clément Gauthier</a></p>
+      <p>
+        <small>
+          Created by <a href="https://github.com/Klaymant" className="text-purple-500">Clément Gauthier</a>
+        </small>
+      </p>
     </footer>
   );
 }
