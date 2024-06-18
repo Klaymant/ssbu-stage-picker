@@ -17,6 +17,8 @@
 }
 
 body {
+  position: relative;
+  min-height: 100vh;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -34,12 +36,24 @@ main {
     1fr;
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
 main > * {
   grid-column: 2;
 }
 
 h2 {
   font-family: Smash;
+}
+
+a {
+  text-decoration: underline;
 }
 
 @keyframes horizontal-shaking {
