@@ -7,6 +7,7 @@ const SelectionButton = ({ children, isSelected, onClick }: Props) => {
   return (
     <BaseButton
       classes={isSelected ? selectedClasses : ''}
+      changeWhenHovered={!isSelected}
       onClick={onClick}
     >
       {children}

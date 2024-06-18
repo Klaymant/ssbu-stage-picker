@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
 import { CssClassHandler } from "../utils/CssClassHandler";
 
-export function BaseButton({ children, classes, onClick }: Props) {
+export function BaseButton({ children, classes, changeWhenHovered = true, onClick }: Props) {
   const buttonBaseClasses = 'border border-gray-500 rounded mx-2 p-1 font-personal-services';
-  const buttonClasses = CssClassHandler.gather(buttonBaseClasses, classes);
+  const buttonHoverClasses = changeWhenHovered ? 'hover:border-purple-500 hover:text-purple-500' : '';
+  const buttonClasses = CssClassHandler.gather(buttonBaseClasses, buttonHoverClasses, classes);
 
   return (
     <button
@@ -19,5 +20,6 @@ export function BaseButton({ children, classes, onClick }: Props) {
 type Props = {
   children: ReactNode;
   classes?: string;
+  changeWhenHovered?: boolean;
   onClick?: () => void;
 };

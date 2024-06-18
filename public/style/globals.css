@@ -36,6 +36,10 @@ main {
     1fr;
 }
 
+main > * {
+  grid-column: 2;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -44,9 +48,6 @@ footer {
   padding: 1rem;
 }
 
-main > * {
-  grid-column: 2;
-}
 
 h2 {
   font-family: Smash;
