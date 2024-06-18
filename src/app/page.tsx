@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <AppProvider>
       <StagesProvider>
-        <main className="p-4 sm:p-8">
+        <main className="p-4 sm:p-8 text-center">
           <section>
             <PhaseSelector />
             <StageSelection />

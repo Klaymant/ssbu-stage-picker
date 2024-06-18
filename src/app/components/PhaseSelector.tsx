@@ -2,6 +2,7 @@ import { SetPhase } from "@/types/SetPhase";
 import SelectionButton from "./SelectionButton";
 import { useAppContext } from "../contexts/AppProvider";
 import { useStagesContext } from "../contexts/StagesProvider";
+import { BaseButton } from "./BaseButton";
 
 export function PhaseSelector() {
   const { setPhase, setSetPhase } = useAppContext();
@@ -30,6 +31,9 @@ export function PhaseSelector() {
           >
             Counterpick
           </SelectionButton>
+          <BaseButton onClick={reset}>
+            Reset
+          </BaseButton>
         </section>
       )}
     </>

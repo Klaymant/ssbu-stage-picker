@@ -27,9 +27,11 @@ export function StageSelection() {
         {gamePhase !== 'done' && <StageSelectionList stages={stages} action={action} getDisableState={getDisableState} />}
         {gamePhase === 'done' && <ChosenStageView stage={chosenStage} />}
       </section>
-      <BaseButton onClick={handleNextGame}>
-        {chosenStage ? 'Next game' : 'Reset'}
-      </BaseButton>
+        {chosenStage && (
+          <BaseButton onClick={handleNextGame}>
+            Next game
+          </BaseButton>
+        )}
     </>
   );
 }
