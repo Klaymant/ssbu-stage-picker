@@ -1,11 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { Modal } from "./Modal";
 
 export function Footer() {
-  const [creditsModal, setCreditsModal] = useState(false);
-
   return (
     <footer>
       <p>
