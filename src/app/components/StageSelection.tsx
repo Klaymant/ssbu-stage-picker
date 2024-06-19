@@ -11,7 +11,7 @@ import { useStagesContext } from "../contexts/StagesProvider";
 export function StageSelection() {
   const { stages, gamePhase, gamePhaseInstructions, bannedStages, action, reset, getDisableState } = useStagesContext();
   const chosenStage = stages.find((stage) => stage.state === 'valided');
-  const sectionBaseClasses = 'flex justify-around flex-wrap gap-0.5';
+  const sectionBaseClasses = 'flex justify-between flex-wrap gap-0.5';
   const { setSetPhase } = useAppContext();
 
   function handleNextGame() {

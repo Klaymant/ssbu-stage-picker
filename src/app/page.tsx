@@ -10,15 +10,17 @@ export default function Home() {
   return (
     <AppProvider>
       <StagesProvider>
-        <div className="content-wrap">
-          <main className="p-2 sm:p-8 text-center">
-            <section>
-              <PhaseSelector />
-              <StageSelection />
-            </section>
-          </main>
+        <div className="page-container">
+          <div className="content-wrap">
+            <main className="p-2 sm:p-4 text-center">
+              <section>
+                <PhaseSelector />
+                <StageSelection />
+              </section>
+            </main>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </StagesProvider>
     </AppProvider>
   );

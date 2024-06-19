@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+html {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --footer-height: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  html {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
@@ -18,8 +19,6 @@
 
 body {
   font-family: var(--font-primary), sans-serif;
-  position: relative;
-  min-height: 100vh;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -44,9 +43,11 @@ main > * {
 
 footer {
   position: absolute;
+  bottom: 0;
   width: 100%;
   text-align: center;
-  padding: 0.25rem;
+  padding: 0.5rem;
+  height: var(--footer-height);
 }
 
 h2 {
@@ -60,6 +61,15 @@ p {
 
 a {
   text-decoration: underline;
+}
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  padding: var(--footer-height);
 }
 
 @keyframes horizontal-shaking {
