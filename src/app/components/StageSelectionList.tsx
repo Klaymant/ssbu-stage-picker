@@ -22,7 +22,7 @@ export function StageSelectionList({ stages, action, getDisableState }: Props) {
 function getStageClasses(stage: Stage): string {
   switch(stage.state) {
     case 'none':
-      return 'border-white hover:border-purple-500';
+      return 'border-white hover:border-purple-800';
     case 'banned':
       return 'border-red-500';
     case 'picked':

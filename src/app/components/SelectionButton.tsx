@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { BaseButton } from "./BaseButton";
 
 const SelectionButton = ({ children, isSelected, onClick }: Props) => {
-  const selectedClasses = 'bg-purple-500';
+  const selectedClasses = 'bg-purple-800';
 
   return (
     <BaseButton

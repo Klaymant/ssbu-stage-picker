@@ -7,6 +7,8 @@ html {
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --footer-height: 0.5rem;
+  --primary-color: #6b21a8;
+  --header-background-color: #1c1917;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,7 +31,7 @@ body {
   font-size: 16px;
 }
 
-main {
+main, header {
   display: grid;
   grid-template-columns:
     1fr
@@ -37,8 +39,33 @@ main {
     1fr;
 }
 
-main > * {
+main > *, header > * {
   grid-column: 2;
+}
+
+header {
+  margin-bottom: 20px;
+  padding: 0.5rem;
+  background-color: var(--header-background-color);
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+h1::before {
+  --img-size: 60px;
+  padding-top: 10px;
+  background-image: url('../assets/icons/ssbu-icon.png');
+  background-size: var(--img-size);
+  display: inline-block;
+  width: var(--img-size);
+  height: var(--img-size);
+  content:"";
 }
 
 footer {
@@ -66,10 +93,6 @@ a {
 .page-container {
   position: relative;
   min-height: 100vh;
-}
-
-.content-wrap {
-  padding: var(--footer-height);
 }
 
 @keyframes horizontal-shaking {
